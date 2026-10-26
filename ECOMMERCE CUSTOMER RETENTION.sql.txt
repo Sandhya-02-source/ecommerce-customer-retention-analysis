@@ -1,0 +1,620 @@
+#    *** ECOMMERCE CUSTOMER RETENTION AND COHORT ANALYSIS***
+
+create database ecommerce_retention;
+use ecommerce_retention;
+CREATE TABLE Customers (
+    Customer_ID INT PRIMARY KEY,
+    Customer_Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE,
+    Gender VARCHAR(10),
+    City VARCHAR(50),
+    Registration_Date DATE
+);
+USE ecommerce_retention;
+
+INSERT INTO Customers
+(Customer_ID, Customer_Name, Email, Gender, City, Registration_Date)
+VALUES
+(1, 'Rahul Sharma', 'rahul1@gmail.com', 'Male', 'Hyderabad', '2025-01-05'),
+(2, 'Priya Reddy', 'priya2@gmail.com', 'Female', 'Mumbai', '2025-01-08'),
+(3, 'Arjun Kumar', 'arjun3@gmail.com', 'Male', 'Bangalore', '2025-01-12'),
+(4, 'Sneha Patel', 'sneha4@gmail.com', 'Female', 'Pune', '2025-01-15'),
+(5, 'Rohit Verma', 'rohit5@gmail.com', 'Male', 'Delhi', '2025-01-18'),
+(6, 'Anjali Rao', 'anjali6@gmail.com', 'Female', 'Hyderabad', '2025-01-22'),
+(7, 'Vikram Singh', 'vikram7@gmail.com', 'Male', 'Chennai', '2025-01-25'),
+(8, 'Pooja Shah', 'pooja8@gmail.com', 'Female', 'Pune', '2025-02-02'),
+(9, 'Karan Mehta', 'karan9@gmail.com', 'Male', 'Mumbai', '2025-02-05'),
+(10, 'Neha Das', 'neha10@gmail.com', 'Female', 'Kolkata', '2025-02-08'),
+(11, 'Amit Joshi', 'amit11@gmail.com', 'Male', 'Delhi', '2025-02-10'),
+(12, 'Kavya Nair', 'kavya12@gmail.com', 'Female', 'Chennai', '2025-02-12'),
+(13, 'Suresh Rao', 'suresh13@gmail.com', 'Male', 'Hyderabad', '2025-02-15'),
+(14, 'Divya Menon', 'divya14@gmail.com', 'Female', 'Bangalore', '2025-02-18'),
+(15, 'Manish Gupta', 'manish15@gmail.com', 'Male', 'Mumbai', '2025-02-20'),
+(16, 'Swati Joshi', 'swati16@gmail.com', 'Female', 'Pune', '2025-02-22'),
+(17, 'Nikhil Reddy', 'nikhil17@gmail.com', 'Male', 'Hyderabad', '2025-02-25'),
+(18, 'Meera Iyer', 'meera18@gmail.com', 'Female', 'Chennai', '2025-03-01'),
+(19, 'Varun Kapoor', 'varun19@gmail.com', 'Male', 'Delhi', '2025-03-04'),
+(20, 'Riya Sharma', 'riya20@gmail.com', 'Female', 'Mumbai', '2025-03-07'),
+(21, 'Akash Verma', 'akash21@gmail.com', 'Male', 'Pune', '2025-03-10'),
+(22, 'Nandini Rao', 'nandini22@gmail.com', 'Female', 'Hyderabad', '2025-03-12'),
+(23, 'Kunal Shah', 'kunal23@gmail.com', 'Male', 'Ahmedabad', '2025-03-15'),
+(24, 'Isha Patel', 'isha24@gmail.com', 'Female', 'Surat', '2025-03-18'),
+(25, 'Ravi Kumar', 'ravi25@gmail.com', 'Male', 'Bangalore', '2025-03-20'),
+(26, 'Shreya Das', 'shreya26@gmail.com', 'Female', 'Kolkata', '2025-03-22'),
+(27, 'Aditya Singh', 'aditya27@gmail.com', 'Male', 'Delhi', '2025-03-25'),
+(28, 'Ayesha Khan', 'ayesha28@gmail.com', 'Female', 'Mumbai', '2025-03-28'),
+(29, 'Harish Reddy', 'harish29@gmail.com', 'Male', 'Hyderabad', '2025-04-01'),
+(30, 'Madhuri Rao', 'madhuri30@gmail.com', 'Female', 'Pune', '2025-04-04'),
+(31, 'Vivek Sharma', 'vivek31@gmail.com', 'Male', 'Jaipur', '2025-04-07'),
+(32, 'Sakshi Mehta', 'sakshi32@gmail.com', 'Female', 'Mumbai', '2025-04-10'),
+(33, 'Rajesh Kumar', 'rajesh33@gmail.com', 'Male', 'Chennai', '2025-04-12'),
+(34, 'Bhavana Reddy', 'bhavana34@gmail.com', 'Female', 'Hyderabad', '2025-04-15'),
+(35, 'Sanjay Patel', 'sanjay35@gmail.com', 'Male', 'Ahmedabad', '2025-04-18'),
+(36, 'Lavanya Rao', 'lavanya36@gmail.com', 'Female', 'Bangalore', '2025-04-20'),
+(37, 'Deepak Singh', 'deepak37@gmail.com', 'Male', 'Delhi', '2025-04-22'),
+(38, 'Aaradhya Shah', 'aaradhya38@gmail.com', 'Female', 'Pune', '2025-04-25'),
+(39, 'Mohit Verma', 'mohit39@gmail.com', 'Male', 'Mumbai', '2025-04-28'),
+(40, 'Keerthi Nair', 'keerthi40@gmail.com', 'Female', 'Chennai', '2025-05-01'),
+(41, 'Ramesh Gupta', 'ramesh41@gmail.com', 'Male', 'Delhi', '2025-05-04'),
+(42, 'Tanvi Sharma', 'tanvi42@gmail.com', 'Female', 'Hyderabad', '2025-05-07'),
+(43, 'Abhishek Rao', 'abhishek43@gmail.com', 'Male', 'Bangalore', '2025-05-10'),
+(44, 'Aditi Patel', 'aditi44@gmail.com', 'Female', 'Surat', '2025-05-12'),
+(45, 'Sameer Khan', 'sameer45@gmail.com', 'Male', 'Mumbai', '2025-05-15'),
+(46, 'Komal Shah', 'komal46@gmail.com', 'Female', 'Pune', '2025-05-18'),
+(47, 'Pranav Reddy', 'pranav47@gmail.com', 'Male', 'Hyderabad', '2025-05-20'),
+(48, 'Nisha Iyer', 'nisha48@gmail.com', 'Female', 'Chennai', '2025-05-22'),
+(49, 'Rakesh Kumar', 'rakesh49@gmail.com', 'Male', 'Kolkata', '2025-05-25'),
+(50, 'Simran Kaur', 'simran50@gmail.com', 'Female', 'Delhi', '2025-05-28'),
+(51, 'Tarun Sharma', 'tarun51@gmail.com', 'Male', 'Mumbai', '2025-06-01'),
+(52, 'Pallavi Rao', 'pallavi52@gmail.com', 'Female', 'Hyderabad', '2025-06-04'),
+(53, 'Gaurav Patel', 'gaurav53@gmail.com', 'Male', 'Ahmedabad', '2025-06-07'),
+(54, 'Ritika Singh', 'ritika54@gmail.com', 'Female', 'Pune', '2025-06-10'),
+(55, 'Manoj Reddy', 'manoj55@gmail.com', 'Male', 'Hyderabad', '2025-06-12'),
+(56, 'Sonia Das', 'sonia56@gmail.com', 'Female', 'Kolkata', '2025-06-15'),
+(57, 'Yash Mehta', 'yash57@gmail.com', 'Male', 'Mumbai', '2025-06-18'),
+(58, 'Preeti Nair', 'preeti58@gmail.com', 'Female', 'Chennai', '2025-06-20'),
+(59, 'Ashwin Kumar', 'ashwin59@gmail.com', 'Male', 'Bangalore', '2025-06-22'),
+(60, 'Mansi Shah', 'mansi60@gmail.com', 'Female', 'Pune', '2025-06-25'),
+(61, 'Rohan Verma', 'rohan61@gmail.com', 'Male', 'Delhi', '2025-07-01'),
+(62, 'Shalini Rao', 'shalini62@gmail.com', 'Female', 'Hyderabad', '2025-07-04'),
+(63, 'Naveen Patel', 'naveen63@gmail.com', 'Male', 'Ahmedabad', '2025-07-07'),
+(64, 'Radhika Sharma', 'radhika64@gmail.com', 'Female', 'Mumbai', '2025-07-10'),
+(65, 'Siddharth Singh', 'siddharth65@gmail.com', 'Male', 'Delhi', '2025-07-12'),
+(66, 'Ananya Reddy', 'ananya66@gmail.com', 'Female', 'Hyderabad', '2025-07-15'),
+(67, 'Vishal Kumar', 'vishal67@gmail.com', 'Male', 'Bangalore', '2025-07-18'),
+(68, 'Swara Patel', 'swara68@gmail.com', 'Female', 'Pune', '2025-07-20'),
+(69, 'Chirag Shah', 'chirag69@gmail.com', 'Male', 'Mumbai', '2025-07-22'),
+(70, 'Maya Nair', 'maya70@gmail.com', 'Female', 'Chennai', '2025-07-25'),
+(71, 'Rajat Gupta', 'rajat71@gmail.com', 'Male', 'Delhi', '2025-08-01'),
+(72, 'Ishita Rao', 'ishita72@gmail.com', 'Female', 'Hyderabad', '2025-08-04'),
+(73, 'Dev Patel', 'dev73@gmail.com', 'Male', 'Ahmedabad', '2025-08-07'),
+(74, 'Roshni Singh', 'roshni74@gmail.com', 'Female', 'Pune', '2025-08-10'),
+(75, 'Abhinav Sharma', 'abhinav75@gmail.com', 'Male', 'Mumbai', '2025-08-12'),
+(76, 'Kritika Reddy', 'kritika76@gmail.com', 'Female', 'Hyderabad', '2025-08-15'),
+(77, 'Varun Kumar', 'varun77@gmail.com', 'Male', 'Bangalore', '2025-08-18'),
+(78, 'Shivani Patel', 'shivani78@gmail.com', 'Female', 'Surat', '2025-08-20'),
+(79, 'Nitin Shah', 'nitin79@gmail.com', 'Male', 'Mumbai', '2025-08-22'),
+(80, 'Aishwarya Nair', 'aishwarya80@gmail.com', 'Female', 'Chennai', '2025-08-25'),
+(81, 'Sahil Verma', 'sahil81@gmail.com', 'Male', 'Delhi', '2025-09-01'),
+(82, 'Pavani Rao', 'pavani82@gmail.com', 'Female', 'Hyderabad', '2025-09-04'),
+(83, 'Aman Patel', 'aman83@gmail.com', 'Male', 'Ahmedabad', '2025-09-07'),
+(84, 'Sanya Sharma', 'sanya84@gmail.com', 'Female', 'Mumbai', '2025-09-10'),
+(85, 'Karthik Reddy', 'karthik85@gmail.com', 'Male', 'Hyderabad', '2025-09-12'),
+(86, 'Harini Kumar', 'harini86@gmail.com', 'Female', 'Bangalore', '2025-09-15'),
+(87, 'Varsha Singh', 'varsha87@gmail.com', 'Female', 'Delhi', '2025-09-18'),
+(88, 'Omkar Shah', 'omkar88@gmail.com', 'Male', 'Pune', '2025-09-20'),
+(89, 'Monika Patel', 'monika89@gmail.com', 'Female', 'Surat', '2025-09-22'),
+(90, 'Suresh Verma', 'suresh90@gmail.com', 'Male', 'Mumbai', '2025-09-25'),
+(91, 'Akshay Rao', 'akshay91@gmail.com', 'Male', 'Hyderabad', '2025-10-01'),
+(92, 'Divya Sharma', 'divya92@gmail.com', 'Female', 'Delhi', '2025-10-04'),
+(93, 'Nikhil Patel', 'nikhil93@gmail.com', 'Male', 'Ahmedabad', '2025-10-07'),
+(94, 'Rhea Singh', 'rhea94@gmail.com', 'Female', 'Pune', '2025-10-10'),
+(95, 'Suraj Kumar', 'suraj95@gmail.com', 'Male', 'Bangalore', '2025-10-12'),
+(96, 'Mrunal Shah', 'mrunal96@gmail.com', 'Female', 'Mumbai', '2025-10-15'),
+(97, 'Harsh Reddy', 'harsh97@gmail.com', 'Male', 'Hyderabad', '2025-10-18'),
+(98, 'Nikita Rao', 'nikita98@gmail.com', 'Female', 'Chennai', '2025-10-20'),
+(99, 'Sahil Patel', 'sahil99@gmail.com', 'Male', 'Surat', '2025-10-22'),
+(100, 'Ira Nair', 'ira100@gmail.com', 'Female', 'Kolkata', '2025-10-25');
+
+CREATE TABLE Products (
+    Product_ID INT PRIMARY KEY,
+    Product_Name VARCHAR(100) NOT NULL,
+    Category VARCHAR(50),
+    Price DECIMAL(10,2)
+);
+INSERT INTO Products
+(Product_ID, Product_Name, Category, Price)
+VALUES
+(101, 'Wireless Headphones', 'Electronics', 1999.00),
+(102, 'Smart Watch', 'Electronics', 2999.00),
+(103, 'Bluetooth Speaker', 'Electronics', 1799.00),
+(104, 'Wireless Mouse', 'Electronics', 899.00),
+(105, 'Keyboard', 'Electronics', 1299.00),
+
+(106, 'Laptop Backpack', 'Accessories', 1499.00),
+(107, 'Travel Bag', 'Accessories', 1299.00),
+(108, 'Wallet', 'Accessories', 699.00),
+(109, 'Sunglasses', 'Accessories', 999.00),
+(110, 'Handbag', 'Accessories', 1899.00),
+
+(111, 'Running Shoes', 'Footwear', 2499.00),
+(112, 'Casual Shoes', 'Footwear', 1999.00),
+(113, 'Sports Shoes', 'Footwear', 2999.00),
+(114, 'Sandals', 'Footwear', 999.00),
+(115, 'Slippers', 'Footwear', 599.00),
+
+(116, 'T-Shirt', 'Clothing', 799.00),
+(117, 'Jeans', 'Clothing', 1599.00),
+(118, 'Formal Shirt', 'Clothing', 1299.00),
+(119, 'Jacket', 'Clothing', 2499.00),
+(120, 'Kurti', 'Clothing', 1199.00),
+
+(121, 'Coffee Maker', 'Home Appliances', 3499.00),
+(122, 'Electric Kettle', 'Home Appliances', 1499.00),
+(123, 'Mixer Grinder', 'Home Appliances', 2999.00),
+(124, 'Air Fryer', 'Home Appliances', 4499.00),
+(125, 'Toaster', 'Home Appliances', 1799.00),
+
+(126, 'Face Wash', 'Beauty', 499.00),
+(127, 'Moisturizer', 'Beauty', 699.00),
+(128, 'Sunscreen', 'Beauty', 599.00),
+(129, 'Shampoo', 'Beauty', 449.00),
+(130, 'Face Cream', 'Beauty', 799.00),
+
+(131, 'Novel', 'Books', 399.00),
+(132, 'Self Help Book', 'Books', 599.00),
+(133, 'Business Book', 'Books', 699.00),
+(134, 'Programming Book', 'Books', 899.00),
+(135, 'Data Science Book', 'Books', 999.00),
+
+(136, 'Yoga Mat', 'Sports', 899.00),
+(137, 'Cricket Bat', 'Sports', 2499.00),
+(138, 'Football', 'Sports', 999.00),
+(139, 'Badminton Racket', 'Sports', 1599.00),
+(140, 'Skipping Rope', 'Sports', 399.00),
+
+(141, 'Water Bottle', 'Kitchen', 499.00),
+(142, 'Lunch Box', 'Kitchen', 699.00),
+(143, 'Cookware Set', 'Kitchen', 2999.00),
+(144, 'Dinner Set', 'Kitchen', 1999.00),
+(145, 'Storage Container', 'Kitchen', 799.00),
+
+(146, 'Table Lamp', 'Home Decor', 899.00),
+(147, 'Wall Clock', 'Home Decor', 699.00),
+(148, 'Cushion Set', 'Home Decor', 999.00),
+(149, 'Curtains', 'Home Decor', 1499.00),
+(150, 'Bed Sheet', 'Home Decor', 1299.00);
+
+CREATE TABLE Orders (
+    Order_ID INT PRIMARY KEY,
+    Customer_ID INT,
+    Order_Date DATE,
+    Order_Status VARCHAR(30),
+    Total_Amount DECIMAL(10,2),
+
+    FOREIGN KEY (Customer_ID)
+        REFERENCES Customers(Customer_ID)
+);
+INSERT INTO Orders
+(Order_ID, Customer_ID, Order_Date, Order_Status, Total_Amount)
+VALUES
+
+-- January 2025
+(1001, 1, '2025-01-10', 'Delivered', 1999),
+(1002, 2, '2025-01-12', 'Delivered', 2999),
+(1003, 3, '2025-01-15', 'Delivered', 1499),
+(1004, 4, '2025-01-18', 'Delivered', 2499),
+(1005, 5, '2025-01-20', 'Delivered', 799),
+(1006, 6, '2025-01-22', 'Delivered', 1799),
+(1007, 7, '2025-01-25', 'Delivered', 1299),
+(1008, 8, '2025-01-28', 'Delivered', 3499),
+(1009, 9, '2025-01-29', 'Delivered', 999),
+(1010, 10, '2025-01-30', 'Delivered', 1599),
+
+-- February 2025
+(1011, 1, '2025-02-10', 'Delivered', 1299),
+(1012, 2, '2025-02-12', 'Delivered', 1799),
+(1013, 3, '2025-02-15', 'Delivered', 2999),
+(1014, 4, '2025-02-18', 'Delivered', 899),
+(1015, 5, '2025-02-20', 'Delivered', 1599),
+(1016, 6, '2025-02-22', 'Delivered', 2499),
+(1017, 11, '2025-02-24', 'Delivered', 1999),
+(1018, 12, '2025-02-25', 'Delivered', 699),
+(1019, 13, '2025-02-26', 'Delivered', 2999),
+(1020, 14, '2025-02-27', 'Delivered', 1199),
+
+-- March 2025
+(1021, 1, '2025-03-05', 'Delivered', 2499),
+(1022, 2, '2025-03-08', 'Delivered', 799),
+(1023, 3, '2025-03-10', 'Delivered', 1599),
+(1024, 6, '2025-03-12', 'Delivered', 999),
+(1025, 11, '2025-03-15', 'Delivered', 2999),
+(1026, 12, '2025-03-17', 'Delivered', 1499),
+(1027, 13, '2025-03-20', 'Delivered', 899),
+(1028, 14, '2025-03-22', 'Delivered', 3499),
+(1029, 15, '2025-03-24', 'Delivered', 1999),
+(1030, 16, '2025-03-26', 'Delivered', 1299),
+
+-- April 2025
+(1031, 1, '2025-04-05', 'Delivered', 1799),
+(1032, 3, '2025-04-08', 'Delivered', 2499),
+(1033, 6, '2025-04-10', 'Delivered', 1599),
+(1034, 11, '2025-04-12', 'Delivered', 799),
+(1035, 12, '2025-04-15', 'Delivered', 2999),
+(1036, 15, '2025-04-18', 'Delivered', 999),
+(1037, 16, '2025-04-20', 'Delivered', 1999),
+(1038, 17, '2025-04-22', 'Delivered', 3499),
+(1039, 18, '2025-04-24', 'Delivered', 1299),
+(1040, 19, '2025-04-26', 'Delivered', 899),
+
+-- May 2025
+(1041, 1, '2025-05-05', 'Delivered', 999),
+(1042, 3, '2025-05-08', 'Delivered', 1799),
+(1043, 6, '2025-05-10', 'Delivered', 2999),
+(1044, 11, '2025-05-12', 'Delivered', 1499),
+(1045, 12, '2025-05-15', 'Delivered', 2499),
+(1046, 15, '2025-05-18', 'Delivered', 799),
+(1047, 17, '2025-05-20', 'Delivered', 1599),
+(1048, 18, '2025-05-22', 'Delivered', 3499),
+(1049, 20, '2025-05-24', 'Delivered', 1999),
+(1050, 21, '2025-05-26', 'Delivered', 1299),
+
+-- June 2025
+(1051, 1, '2025-06-05', 'Delivered', 2999),
+(1052, 3, '2025-06-08', 'Delivered', 1499),
+(1053, 6, '2025-06-10', 'Delivered', 899),
+(1054, 11, '2025-06-12', 'Delivered', 2499),
+(1055, 15, '2025-06-15', 'Delivered', 1799),
+(1056, 17, '2025-06-18', 'Delivered', 999),
+(1057, 18, '2025-06-20', 'Delivered', 2999),
+(1058, 20, '2025-06-22', 'Delivered', 1599),
+(1059, 21, '2025-06-24', 'Delivered', 799),
+(1060, 22, '2025-06-26', 'Delivered', 1999),
+
+-- July 2025
+(1061, 1, '2025-07-05', 'Delivered', 1599),
+(1062, 3, '2025-07-08', 'Delivered', 2499),
+(1063, 6, '2025-07-10', 'Delivered', 1799),
+(1064, 11, '2025-07-12', 'Delivered', 999),
+(1065, 15, '2025-07-15', 'Delivered', 2999),
+(1066, 17, '2025-07-18', 'Delivered', 1499),
+(1067, 20, '2025-07-20', 'Delivered', 899),
+(1068, 22, '2025-07-22', 'Delivered', 2499),
+(1069, 23, '2025-07-24', 'Delivered', 1299),
+(1070, 24, '2025-07-26', 'Delivered', 1999),
+
+-- August 2025
+(1071, 1, '2025-08-05', 'Delivered', 2499),
+(1072, 3, '2025-08-08', 'Delivered', 999),
+(1073, 6, '2025-08-10', 'Delivered', 1599),
+(1074, 11, '2025-08-12', 'Delivered', 2999),
+(1075, 15, '2025-08-15', 'Delivered', 1799),
+(1076, 17, '2025-08-18', 'Delivered', 799),
+(1077, 20, '2025-08-20', 'Delivered', 3499),
+(1078, 22, '2025-08-22', 'Delivered', 1299),
+(1079, 25, '2025-08-24', 'Delivered', 1999),
+(1080, 26, '2025-08-26', 'Delivered', 899),
+
+-- September 2025
+(1081, 1, '2025-09-05', 'Delivered', 1799),
+(1082, 3, '2025-09-08', 'Delivered', 2999),
+(1083, 6, '2025-09-10', 'Delivered', 1499),
+(1084, 11, '2025-09-12', 'Delivered', 999),
+(1085, 15, '2025-09-15', 'Delivered', 2499),
+(1086, 17, '2025-09-18', 'Delivered', 1599),
+(1087, 20, '2025-09-20', 'Delivered', 799),
+(1088, 22, '2025-09-22', 'Delivered', 2999),
+(1089, 25, '2025-09-24', 'Delivered', 1299),
+(1090, 27, '2025-09-26', 'Delivered', 1999),
+
+-- October 2025
+(1091, 1, '2025-10-05', 'Delivered', 2999),
+(1092, 3, '2025-10-08', 'Delivered', 1799),
+(1093, 6, '2025-10-10', 'Delivered', 2499),
+(1094, 11, '2025-10-12', 'Delivered', 899),
+(1095, 15, '2025-10-15', 'Delivered', 1599),
+(1096, 17, '2025-10-18', 'Delivered', 3499),
+(1097, 20, '2025-10-20', 'Delivered', 999),
+(1098, 22, '2025-10-22', 'Delivered', 1999),
+(1099, 25, '2025-10-24', 'Delivered', 1299),
+(1100, 28, '2025-10-26', 'Delivered', 799);
+CREATE TABLE Order_Details (
+    Order_Detail_ID INT PRIMARY KEY,
+    Order_ID INT,
+    Product_ID INT,
+    Quantity INT,
+    Unit_Price DECIMAL(10,2),
+
+    FOREIGN KEY (Order_ID)
+        REFERENCES Orders(Order_ID),
+
+    FOREIGN KEY (Product_ID)
+        REFERENCES Products(Product_ID)
+);
+INSERT INTO Order_Details
+(Order_Detail_ID, Order_ID, Product_ID, Quantity, Unit_Price)
+VALUES
+(1, 1001, 101, 1, 1999),
+(2, 1002, 102, 1, 2999),
+(3, 1003, 103, 1, 1499),
+(4, 1004, 111, 1, 2499),
+(5, 1005, 116, 1, 799),
+(6, 1006, 103, 1, 1799),
+(7, 1007, 107, 1, 1299),
+(8, 1008, 121, 1, 3499),
+(9, 1009, 109, 1, 999),
+(10, 1010, 117, 1, 1599),
+
+(11, 1011, 108, 1, 1299),
+(12, 1012, 103, 1, 1799),
+(13, 1013, 102, 1, 2999),
+(14, 1014, 104, 1, 899),
+(15, 1015, 117, 1, 1599),
+(16, 1016, 111, 1, 2499),
+(17, 1017, 101, 1, 1999),
+(18, 1018, 108, 1, 699),
+(19, 1019, 102, 1, 2999),
+(20, 1020, 120, 1, 1199),
+
+(21, 1021, 111, 1, 2499),
+(22, 1022, 116, 1, 799),
+(23, 1023, 117, 1, 1599),
+(24, 1024, 109, 1, 999),
+(25, 1025, 102, 1, 2999),
+(26, 1026, 103, 1, 1499),
+(27, 1027, 104, 1, 899),
+(28, 1028, 121, 1, 3499),
+(29, 1029, 101, 1, 1999),
+(30, 1030, 107, 1, 1299),
+
+(31, 1031, 103, 1, 1799),
+(32, 1032, 111, 1, 2499),
+(33, 1033, 117, 1, 1599),
+(34, 1034, 116, 1, 799),
+(35, 1035, 102, 1, 2999),
+(36, 1036, 109, 1, 999),
+(37, 1037, 101, 1, 1999),
+(38, 1038, 121, 1, 3499),
+(39, 1039, 107, 1, 1299),
+(40, 1040, 104, 1, 899),
+
+(41, 1041, 109, 1, 999),
+(42, 1042, 103, 1, 1799),
+(43, 1043, 102, 1, 2999),
+(44, 1044, 106, 1, 1499),
+(45, 1045, 111, 1, 2499),
+(46, 1046, 116, 1, 799),
+(47, 1047, 117, 1, 1599),
+(48, 1048, 121, 1, 3499),
+(49, 1049, 101, 1, 1999),
+(50, 1050, 107, 1, 1299),
+
+(51, 1051, 102, 1, 2999),
+(52, 1052, 103, 1, 1499),
+(53, 1053, 104, 1, 899),
+(54, 1054, 111, 1, 2499),
+(55, 1055, 103, 1, 1799),
+(56, 1056, 109, 1, 999),
+(57, 1057, 102, 1, 2999),
+(58, 1058, 117, 1, 1599),
+(59, 1059, 116, 1, 799),
+(60, 1060, 101, 1, 1999),
+
+(61, 1061, 117, 1, 1599),
+(62, 1062, 111, 1, 2499),
+(63, 1063, 103, 1, 1799),
+(64, 1064, 109, 1, 999),
+(65, 1065, 102, 1, 2999),
+(66, 1066, 106, 1, 1499),
+(67, 1067, 104, 1, 899),
+(68, 1068, 107, 1, 1299),
+(69, 1069, 101, 1, 1999),
+(70, 1070, 108, 1, 1299),
+
+(71, 1071, 111, 1, 2499),
+(72, 1072, 109, 1, 999),
+(73, 1073, 117, 1, 1599),
+(74, 1074, 102, 1, 2999),
+(75, 1075, 103, 1, 1799),
+(76, 1076, 116, 1, 799),
+(77, 1077, 121, 1, 3499),
+(78, 1078, 107, 1, 1299),
+(79, 1079, 101, 1, 1999),
+(80, 1080, 104, 1, 899),
+
+(81, 1081, 103, 1, 1799),
+(82, 1082, 102, 1, 2999),
+(83, 1083, 106, 1, 1499),
+(84, 1084, 109, 1, 999),
+(85, 1085, 111, 1, 2499),
+(86, 1086, 117, 1, 1599),
+(87, 1087, 116, 1, 799),
+(88, 1088, 102, 1, 2999),
+(89, 1089, 107, 1, 1299),
+(90, 1090, 101, 1, 1999),
+
+(91, 1091, 102, 1, 2999),
+(92, 1092, 103, 1, 1799),
+(93, 1093, 111, 1, 2499),
+(94, 1094, 104, 1, 899),
+(95, 1095, 117, 1, 1599),
+(96, 1096, 121, 1, 3499),
+(97, 1097, 109, 1, 999),
+(98, 1098, 101, 1, 1999),
+(99, 1099, 107, 1, 1299),
+(100, 1100, 116, 1, 799);
+
+#                                                        *****Solved Business Questions*****
+# 1. Customer First Purchase Analysis
+SELECT Customer_ID, MIN(Order_Date) AS First_Purchase
+FROM Orders
+GROUP BY Customer_ID;
+
+# 2. Customers Who Ordered More Than Once
+SELECT Customer_ID, COUNT(Order_ID) AS Total_Orders
+FROM Orders
+GROUP BY Customer_ID
+HAVING COUNT(Order_ID) > 1;
+
+# 3. Customers Who Ordered Only Once
+SELECT Customer_ID
+FROM Orders
+GROUP BY Customer_ID
+HAVING COUNT(Order_ID) = 1;
+
+# 4. Monthly Revenue
+SELECT MONTH(Order_Date) AS Month,
+       SUM(Total_Amount) AS Revenue
+FROM Orders
+GROUP BY MONTH(Order_Date)
+ORDER BY Month;
+
+# 5. Total Revenue
+SELECT SUM(Total_Amount) AS Total_Revenue
+FROM Orders;
+
+# 6.Top Selling Products
+SELECT p.Product_Name,
+       SUM(od.Quantity) AS Total_Sold
+FROM Products p
+JOIN Order_Details od
+ON p.Product_ID = od.Product_ID
+GROUP BY p.Product_Name
+ORDER BY Total_Sold DESC
+LIMIT 10;
+
+# 7. Revenue by Category
+SELECT p.Category,
+       SUM(od.Quantity * od.Unit_Price) AS Revenue
+FROM Products p
+JOIN Order_Details od
+ON p.Product_ID = od.Product_ID
+GROUP BY p.Category;
+
+# 8. Average Order Value
+SELECT AVG(Total_Amount) AS Average_Order_Value
+FROM Orders;
+
+# 9. Top 5 Customers
+SELECT c.Customer_Name,
+       SUM(o.Total_Amount) AS Total_Spent
+FROM Customers c
+JOIN Orders o
+ON c.Customer_ID = o.Customer_ID
+GROUP BY c.Customer_Name
+ORDER BY Total_Spent DESC
+LIMIT 5;
+
+# 10. Complete Order Report
+SELECT c.Customer_Name,
+       o.Order_Date,
+       p.Product_Name,
+       od.Quantity,
+       od.Unit_Price
+FROM Customers c
+JOIN Orders o
+ON c.Customer_ID = o.Customer_ID
+JOIN Order_Details od
+ON o.Order_ID = od.Order_ID
+JOIN Products p
+ON od.Product_ID = p.Product_ID
+LIMIT 20;
+
+# 11. Which customer placed the most orders?
+SELECT Customer_ID, COUNT(Order_ID) AS Total_Orders
+FROM Orders
+GROUP BY Customer_ID
+ORDER BY Total_Orders DESC
+LIMIT 1;
+
+# 12. List all customers who ordered in March.
+SELECT DISTINCT Customer_ID
+FROM Orders
+WHERE MONTH(Order_Date) = 3;
+
+# 13. How many orders were placed each month?
+SELECT MONTH(Order_Date) AS Month,
+       COUNT(*) AS Total_Orders
+FROM Orders
+GROUP BY MONTH(Order_Date)
+ORDER BY Month;
+
+# 14. Find the highest-value order.
+SELECT *
+FROM Orders
+ORDER BY Total_Amount DESC
+LIMIT 1;
+
+# 15. Find the lowest-value order.
+SELECT *
+FROM Orders
+ORDER BY Total_Amount ASC
+LIMIT 1;
+
+# 16. How many products are there in each category?
+SELECT Category,
+       COUNT(*) AS Total_Products
+FROM Products
+GROUP BY Category;
+
+# 17. Find the most expensive product.
+SELECT *
+FROM Products
+ORDER BY Price DESC
+LIMIT 1;
+
+# 18. Find the cheapest product.
+SELECT *
+FROM Products
+ORDER BY Price ASC
+LIMIT 1;
+
+# 19. List all products costing more than ₹2000.
+SELECT *
+FROM Products
+WHERE Price > 2000;
+
+# 20. Which category sold the most items?
+SELECT p.Category,
+       SUM(od.Quantity) AS Items_Sold
+FROM Products p
+JOIN Order_Details od
+ON p.Product_ID = od.Product_ID
+GROUP BY p.Category
+ORDER BY Items_Sold DESC;
+
+
+#        ** COHORT ANALYSIS **
+# 1. Find each customer's first purchase
+SELECT
+    Customer_ID,
+    MIN(Order_Date) AS First_Purchase
+FROM Orders
+GROUP BY Customer_ID;
+
+# 2. Find the customer's cohort month
+SELECT
+    Customer_ID,
+    MONTH(MIN(Order_Date)) AS Cohort_Month
+FROM Orders
+GROUP BY Customer_ID;
+
+# 3. Find repeat customers
+SELECT
+    Customer_ID,
+    COUNT(Order_ID) AS Total_Orders
+FROM Orders
+GROUP BY Customer_ID
+HAVING COUNT(Order_ID) > 1;
+
+# 4. Find one-time customers
+SELECT
+    Customer_ID,
+    COUNT(Order_ID) AS Total_Orders
+FROM Orders
+GROUP BY Customer_ID
+HAVING COUNT(Order_ID) = 1;
+
+
+
+this is my sql project and i have to add this on my github tell me in step by step
